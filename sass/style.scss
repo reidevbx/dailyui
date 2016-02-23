@@ -3,68 +3,69 @@
 @import 'compass';
 @import 'compass/reset';
 @import "grids";
-@import 'susy';  
-@import 'breakpoint';  
+@import 'susy';
+@import 'breakpoint';
 $base-font-size: 16px;
 $base-line-height: 24px;
-$susy: (  
-    columns: 12,  
-    gutters: 0,        
-    flow: ltr,  
-    math: fluid,     
-    output: float,  
-    gutter-position: after,
-    globe-box-sizeing: border-box,
-    last-flow: to,
-    debug: (image: show),  
-);
-
-$desktop: (
+$susy: ( 
+	columns: 12, 
+	gutters: 0, 
+	flow: ltr, 
+	math: fluid, 
+	output: float, 
+	gutter-position: 
+	after, globe-box-sizeing: 
+	border-box, 
+	last-flow: to, 
+	debug: (image: show), );
+$desktop: ( 
 	columns: 12,
-	// output: isolate,
 );
-$pad: (
-	columns: 4,
+$pad: ( 
+	columns: 4, 
 );
-$mobile: (
-	columns: 4,	
+$mobile: ( 
+	columns: 4, 
 );
 
 
-.container{
-	height: 100vh;
+.container {
+    height: 100vh;
     @include container;
 }
 
 .user {
-	// height: 50px;
 	background: black;
-	// @include container;
-	@include span(8);
-	.userpic{
-		padding-top: 37.5%;
+	.userpic {
+		padding-top: 100%;
 	}
+    @include susy-breakpoint(700px, $mobile) {
+        @include span(4);
+    }
+	@include susy-breakpoint(1000px, $desktop) {
+    	@include span(8);
+        .userpic {
+        	padding-top: 37.5%;
+        }
+    }
 }
 
 .work {
 	.pic {
-		padding-top: 75%;
-		img {
-			width: 100%;
+    padding-top: 75%;
+    border: 1px solid #cccccc;
+    background-color: blue;
+        img {
+            width: 100%;
 		}
-	}
-	background-color: blue;		
-	@include susy-breakpoint(1000px,$desktop) {
-		@include span(4);
-		@include container();
-	}
+    }
+    @include susy-breakpoint(700px, $mobile) {
+        @include span(4);
+    }
+    @include susy-breakpoint(1000px, $desktop) {
+        @include span(4);
 
-	
-	@include susy-breakpoint(700px, $mobile) {
-		@include span(4);
-		@include container();
-
-	}
+    }
 }
 
 // @for $i from 1 through 12 {
