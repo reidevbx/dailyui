@@ -2,7 +2,6 @@
 // ======
 @import 'compass';
 @import 'compass/reset';
-// @import "grids";
 @import 'susy';
 @import 'breakpoint';
 $base-font-size: 16px;
@@ -17,7 +16,7 @@ $susy: (
     after, globe-box-sizeing: 
     border-box, 
     last-flow: to, 
-    debug: (image: show), 
+    debug: (image: hide), 
 );
 $desktop: ( 
     columns: 12,
