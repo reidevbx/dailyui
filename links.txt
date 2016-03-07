@@ -1,0 +1,8 @@
+{
+"facebook": "http://www.facebook.com.tw/",
+"twitter" : "http://www.twitter.com/",
+"linkedin":	"http://www.linkin.com",
+"website" : "www.yahoo.com.tw",
+"dribbble": "www.dribbble.com",
+"behance" : "www.behance.com" 
+}

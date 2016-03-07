@@ -2,74 +2,184 @@
 // ======
 @import 'compass';
 @import 'compass/reset';
-@import "grids";
+// @import "grids";
 @import 'susy';
 @import 'breakpoint';
 $base-font-size: 16px;
 $base-line-height: 24px;
 $susy: ( 
-	columns: 12, 
-	gutters: 0, 
-	flow: ltr, 
-	math: fluid, 
-	output: float, 
-	gutter-position: 
-	after, globe-box-sizeing: 
-	border-box, 
-	last-flow: to, 
-	debug: (image: show), );
+    columns: 12, 
+    gutters: 0, 
+    flow: ltr, 
+    math: fluid, 
+    output: float, 
+    gutter-position: 
+    after, globe-box-sizeing: 
+    border-box, 
+    last-flow: to, 
+    debug: (image: show), 
+);
 $desktop: ( 
-	columns: 12,
+    columns: 12,
 );
 $pad: ( 
-	columns: 4, 
+    columns: 4, 
 );
 $mobile: ( 
-	columns: 4, 
+    columns: 4, 
 );
 
-
+body {
+    background-color: #000;
+}
 .container {
     height: 100vh;
     @include container;
 }
 
 .user {
-	background: black;
-	.userpic {
-		padding-top: 100%;
-	}
+    background: #ccc;
+    position: relative;
+    .links {
+        position: absolute;
+        right: 0em;
+        bottom: 0em;
+        padding-right: 0.5em;
+        padding-bottom: 0.5em;
+        width: 100%;
+        &::before {
+            content: "";
+            position: absolute;
+            bottom: 0px;
+            width: 100%;
+            height: 80px;
+            // @include filter-gradient(#00000000, #a6000000, vertical); // IE6-9
+            @include background-image(linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.65) 100%));
+        }
+        .link {
+            position: relative;
+            >a {
+                display: inline-block;
+                padding: 0.5em;
+                font-size: 30px;
+                color: #fff;
+                float: right;
+                &:hover {
+                    transform: scale(1.4);
+                    transition: all .3s;
+                }
+            }
+        }
+        .website:hover {
+            > a {
+                color: #ccc;
+            }
+        }
+        .facebook:hover {
+            > a {
+                color: #3b5998;
+            }
+        }
+        .twitter:hover {
+            > a {
+                color: #4099ff;
+            }
+        }
+        .linkedin:hover {
+            > a {
+                color: #0077b5;
+            }
+        }
+        .behance:hover {
+            > a {
+                color: #053eff;
+            }
+        }
+        .dribbble:hover {
+            > a {
+                color: #ea4c89;
+            }
+        }
+    }
+    .userpic {
+        padding-top: 100%;
+        position: relative;
+        .desktop-pic,
+        .mobile-pic {
+            position: absolute;
+            top:0px;
+            img {
+                width: 100%;
+            }
+        }
+    }
     @include susy-breakpoint(700px, $mobile) {
         @include span(4);
+        // [class^=desktop] {
+        //     display: none;
+        // }
     }
-	@include susy-breakpoint(1000px, $desktop) {
-    	@include span(8);
+    @include susy-breakpoint(1000px, $desktop) {
+        @include span(8);
+        [class^=mobile] {
+            display: none;
+        }
         .userpic {
-        	padding-top: 37.5%;
+            padding-top: 37.49%;
         }
     }
 }
 
 .work {
-	.pic {
-    padding-top: 75%;
-    border: 1px solid #cccccc;
-    background-color: blue;
+    position: relative;
+    &:hover .day {
+        transform: scale(1.2);
+        transition: all .3s;
+    }
+    .pic {
+        padding-top: 75%;
+        background-color: #ccc;
+        position: relative;
         img {
             width: 100%;
-		}
+            position: absolute;
+            top: 0px;
+        }
     }
     @include susy-breakpoint(700px, $mobile) {
         @include span(4);
     }
     @include susy-breakpoint(1000px, $desktop) {
         @include span(4);
-
+    }
+    .day {
+        position: absolute;
+        height: 60px;
+        width: 60px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.2);
+        color: rgba(255, 255, 255, 1);
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        bottom: 1em;
+        left: 1em;
+        p {
+            font-size: 1.5em;
+            line-height: 1.5;
+            text-align: center;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+    .loader {
+        position: absolute;
+        left: 50%;
+        top: 50%;
     }
 }
 
 // @for $i from 1 through 12 {
-// 	.grid_#{$i} {
-// 		@include span($i);
-// 	}
+//  .grid_#{$i} {
+//      @include span($i);
+//  }
 // }
