@@ -1,8 +1,32 @@
-{
-"facebook": "http://www.facebook.com.tw/",
-"twitter" : "http://www.twitter.com/",
-"linkedin":	"http://www.linkin.com",
-"website" : "www.yahoo.com.tw",
-"dribbble": "www.dribbble.com",
-"behance" : "www.behance.com" 
-}
+[
+  {
+    "name": "dribbble",
+    "url": "https://www.dribbble.com",
+    "icon": "dribbble-box"
+  },
+  {
+    "name": "behance",
+    "url": "https://www.behance.com",
+    "icon": "behance"
+  },
+  {
+    "name": "linkedin",
+    "url": "https://www.linkin.com",
+    "icon": "linkedin-box"
+  },
+  {
+    "name": "twitter",
+    "url": "https://www.twitter.com/",
+    "icon": "twitter-box"
+  },
+  {
+    "name": "facebook",
+    "url": "https://www.facebook.com.tw/",
+    "icon": "facebook-box"
+  },
+  {
+    "name": "website",
+    "url": "www.uccu.tw",
+    "icon": "web"
+  }
+]
