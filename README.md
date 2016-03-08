@@ -1,6 +1,8 @@
 # Daily UI Website
 
 這個網站是提供給參與dailyui的設計師們，所以不需要會寫程式，可以輕易的做出自己dailyui的網站。
+#DEMO
+[wesleyweazin.github.io/dailyui](wesleyweazin.github.io/dailyui)
 
 ##圖片更換方式
 ###作品圖片
