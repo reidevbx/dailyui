@@ -1,50 +1,45 @@
-$(function(){
-	for (i=100 ;i>0 ; i--){
-		$(".works").append('<div class="work">' +
-								'<div class="pic" >'+
-									'<img src="images/day'+i+'.jpg" style="display:none">'+
-								'</div>'+
-								'<div class="day">'+
-									'<p>'+i+'</p>'+
-								'</div>'+
-								'<div class="loader">'+
-									'<div class="loader-inner cube-transition">'+
-										'<div></div>'+
-									'</div>'+
-								'</div>'+
-							'</div>');
+/* global $ */
+$(function () {
+  var totalNum = 100;
+  var $works = $('.works');
+  var worksHtml = [];
+  var workTpl = $('#work-tpl').html();
 
-	}
+  for (var i = totalNum; i > 0; i--) {
+    worksHtml.push(workTpl.replace(/\${num}/g, i));
+  }
 
-	$(".pic img").load(function(){
-			console.log($(this).attr("src"));
-			console.log($($(this).parent()).attr('class'));
-			//console.log($(this).parent.attr('class'));
+  $works.append(worksHtml.join(''));
 
-			$(this).show();
-			$(this).parent().parent().find(".loader").hide();
-	});
+  var lazyImg = $('.lazy').Lazy({
+    scrollDirection: 'vertical',
+    chainable: false,
+    effect: 'fadeIn',
+    afterLoad: function (img) {
+      $(img).closest('.work').find('.loader').fadeOut(1000);
+    },
+    onError: function (img) {
+      $(img).closest('.work').hide();
+      lazyImg.update();
+    }
+  });
 
-	$(".pic img").error(function(){
-			$(this).parent().parent().hide();
+  $.ajax({
+    url: 'links.json',
+    dataType: 'json'
+  })
+  .done(function (data) {
+    var linkHtml = '';
+    var linkTpl = '<div class="link ${name}"><a href="${url}" target="_blank"><i class="fa fa-${icon}"></i></a></div>';
 
-	});
+    data.forEach(function (link) {
+      linkHtml += linkTpl.replace('${name}', link.name).replace('${url}', link.url).replace('${icon}', link.icon);
+    });
 
-		$.ajax({url:"links.txt",
-				type: "GET", 
-				data: {},
-				cached: false,
-				dataType: "json",
-				success: function(data){
-						// console.log(data);
-						$(".user .links .facebook").append("<a href='" + data.facebook + "' target='blank'><i class='mdi mdi-facebook-box'></i></a>")
-						$(".user .links .website").append("<a href='" + data.website + "' target='blank'><i class='mdi mdi-web'></i></a>")
-						$(".user .links .dribbble").append("<a href='" + data.dribbble + "' target='blank'><i class='mdi mdi-dribbble-box'></i></a>")
-						$(".user .links .twitter").append("<a href='" + data.twitter + "' target='blank'><i class='mdi mdi-twitter-box'></i></a>")
-						$(".user .links .behance").append("<a href='" + data.behance + "' target='blank'><i class='mdi mdi-behance'></i></a>")
-						$(".user .links .linkedin").append("<a href='" + data.linkedin + "' target='blank'><i class='mdi mdi-linkedin-box'></i></a>")
-					}
-				});	
+    $('.user .links').html(linkHtml);
+  });
 
-
-})
+  setTimeout(function () {
+    $('body').append('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/loaders.css/0.1.2/loaders.min.css"><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">');
+    }, 500);
+});
