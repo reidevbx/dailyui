@@ -31,7 +31,7 @@ $(function () {
   })
   .done(function (data) {
     var linkHtml = '';
-    var linkTpl = '<div class="link ${name}"><a href="${url}" target="_blank"><i class="mdi mdi-${icon}"></i></a></div>';
+    var linkTpl = '<div class="link ${name}"><a href="${url}" target="_blank"><i class="fa fa-${icon}"></i></a></div>';
 
     data.forEach(function (link) {
       linkHtml += linkTpl.replace('${name}', link.name).replace('${url}', link.url).replace('${icon}', link.icon);
