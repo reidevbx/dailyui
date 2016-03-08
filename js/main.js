@@ -1,28 +1,27 @@
 /* global $ */
 $(function () {
-  for (var i = 100; i > 0; i--) {
-    $('.works').append('<div class="work">' +
-                '<div class="pic" >' +
-                  '<img src="images/day' + i + '.jpg" style="display:none">' +
-                '</div>' +
-                '<div class="day">' +
-                  '<p>' + i + '</p>' +
-                '</div>' +
-                '<div class="loader">' +
-                  '<div class="loader-inner cube-transition">' +
-                    '<div></div>' +
-                  '</div>' +
-                '</div>' +
-              '</div>');
+  var totalNum = 100;
+  var $works = $('.works');
+  var worksHtml = [];
+  var workTpl = $('#work-tpl').html();
+
+  for (var i = totalNum; i > 0; i--) {
+    worksHtml.push(workTpl.replace(/\${num}/g, i));
   }
 
-  $('.pic img').load(function () {
-    $(this).show();
-    $(this).parent().parent().find('.loader').hide();
-  });
+  $works.append(worksHtml.join(''));
 
-  $('.pic img').error(function () {
-    $(this).parent().parent().hide();
+  var lazyImg = $('.lazy').Lazy({
+    scrollDirection: 'vertical',
+    chainable: false,
+    effect: 'fadeIn',
+    afterLoad: function (img) {
+      $(img).closest('.work').find('.loader').fadeOut(1000);
+    },
+    onError: function (img) {
+      $(img).closest('.work').hide();
+      lazyImg.update();
+    }
   });
 
   $.ajax({
