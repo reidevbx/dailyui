@@ -1,6 +1,8 @@
 # Daily UI Website
 
 這個網站是提供給參與dailyui的設計師們，所以不需要會寫程式，可以輕易的做出自己dailyui的網站。
+#DEMO
+[wesleyweazin.github.io/dailyui](http://wesleyweazin.github.io/dailyui/)
 
 ##圖片更換方式
 ###作品圖片
@@ -13,4 +15,4 @@
 請注意圖片的大小與格式。
 
 ##連結更換方式
-找到資料夾下的links.txt，直接更改對應的連結即可。
+找到資料夾下的links.json，直接更改對應的連結即可。
