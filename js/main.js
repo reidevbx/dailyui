@@ -30,7 +30,7 @@ $(function(){
 
 	});
 
-		$.ajax({url:"links.txt",
+		$.ajax({url:"links.json",
 				type: "GET", 
 				data: {},
 				cached: false,
