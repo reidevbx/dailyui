@@ -35,7 +35,6 @@ $(function () {
     data.forEach(function (link) {
       linkHtml += linkTpl.replace('${name}', link.name).replace('${url}', link.url).replace('${icon}', link.icon);
     });
-
     $('.user .links').html(linkHtml);
   });
 
